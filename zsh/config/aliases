@@ -1,0 +1,9 @@
+alias work="cd ~/Documents/Work"
+
+alias rspec="nocorrect bundle exec rspec"
+alias rce="EDITOR=vim rails credentials:edit" 
+
+# Ensure nvim is used instead of vim
+if type nvim > /dev/null 2>&1; then
+  alias vim="nvim"
+fi

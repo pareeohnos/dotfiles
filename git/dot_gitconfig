@@ -1,0 +1,37 @@
+[include]
+  path = .gitconfig_machine
+
+[core]
+	quotepath = false
+	excludesfile = /Users/adrianhooper/.gitignore_global
+	editor = nvim
+	pager = /opt/homebrew/Cellar/git/2.43.0/share/git-core/contrib/diff-highlight/diff-highlight | less
+
+[push]
+	default = upstream
+
+[merge]
+	tool = opendiff
+
+[diff]
+	tool = opendiff
+
+[color]
+	ui = always
+
+[color "diff-highlight"]
+	oldNormal = red bold
+        oldHighlight = red bold 52
+        newNormal = green bold
+        newHighlight = green bold 22
+
+[pull]
+	rebase = true
+
+[alias]
+	lg = "log --color --graph --pretty=format:'%C(#dc322f)%h%C(#b58900)%d %C(#eee8d5)%s %C(#dc322f)| %C(#586f75)%cr %C(#dc322f)| %C(#586e75)%an%Creset' --abbrev-commit"
+        unstage = reset HEAD --
+        branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)%09%(color:red)%(authorname)%09%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+
+[init]
+	templateDir = /Users/ahooper/.git-template
