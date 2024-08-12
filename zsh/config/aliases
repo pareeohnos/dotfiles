@@ -7,3 +7,34 @@ alias rce="EDITOR=vim rails credentials:edit"
 if type nvim > /dev/null 2>&1; then
   alias vim="nvim"
 fi
+
+# Kubernetes
+export KUBE_NAMESPACE="meet"
+
+alias bmeet-prod="export KUBECONFIG=~/.kube/meet-prod"
+alias bmeet-staging="export KUBECONFIG=~/.kube/meet-staging"
+alias ksed="sed -n 's/\*[\ ]*\([A-z0-9_.-]*\).*/\1/p'"
+alias kgrepsed="kubectl config get-contexts -n ${KUBE_NAMESPACE} | ksed"
+alias kcontext="echo -e 'Kubernetes Context (kubectl):\n $(kgrepsed)'"
+alias klogs="customkubectl logs"
+alias kpods="customkubectl get pods"
+alias kdel="customkubectl delete"
+alias kapply="customkubectl apply"
+alias kdump="customkubectl cluster-info dump"
+alias ksvc="customkubectl get svc"
+alias ksecrets="customkubectl get secrets"
+
+random_puma_pod () {
+  kubectl get -n $KUBE_NAMESPACE pods | grep 'puma' | head -1 | grep -oe "^[^ ]*"
+}
+
+kbrails () {
+  export POD_NAME=$(random_puma_pod)
+  kubectl exec -n $KUBE_NAMESPACE -it $POD_NAME -- /bin/bash -c "bundle exec rails c"
+}
+
+customkubectl () {
+  Kcontext
+  echo "Kubernetes Namepsace: '$KUBE_NAMESPACE'"
+  kubectl -n ${KUBE_NAMESPACE} "$@"
+}

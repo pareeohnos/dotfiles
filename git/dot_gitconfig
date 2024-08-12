@@ -5,7 +5,8 @@
 	quotepath = false
 	excludesfile = /Users/adrianhooper/.gitignore_global
 	editor = nvim
-	pager = /opt/homebrew/Cellar/git/2.43.0/share/git-core/contrib/diff-highlight/diff-highlight | less
+	pager = /opt/homebrew/Cellar/git/2.46.0/share/git-core/contrib/diff-highlight/diff-highlight | less
+	compression = 1
 
 [push]
 	default = upstream
@@ -35,3 +36,6 @@
 
 [init]
 	templateDir = /Users/ahooper/.git-template
+[user]
+	name = Adrian Hooper
+	email = adrian.hooper@builder.ai

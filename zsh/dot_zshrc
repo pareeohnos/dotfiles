@@ -11,3 +11,45 @@ setopt HIST_SAVE_NO_DUPS # When writing out the history file, older commands tha
 ZSH_THEME=""
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/opt/homebrew/bin:$PATH"
+
+# Path to your oh-my-zsh installation.
+export ZSH=~/.oh-my-zsh
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME=""
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# Setup antidote
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+antidote load ~/.config/zsh/zsh_plugins.txt
+
+
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
+
+
+# key bindings
+bindkey '[C' forward-word   # alt+left
+bindkey '[D' backward-word  # alt+right
+
+# iTerm shell integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Custom zsh configurations
+. $HOME/.config/zsh/aliases
+. $HOME/.config/zsh/plugin_conf
+. $HOME/.config/zsh/env
+
+ulimit -n 8192
+
+autoload -U promptinit; promptinit
+prompt pure
