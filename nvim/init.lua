@@ -102,7 +102,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -229,7 +229,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+	{ "tpope/vim-sleuth", enabled = false }, -- Detect tabstop and shiftwidth automatically
 
 	-- NOTE: Plugins can also be added by using a table,
 	-- with the first argument being the link and the following
@@ -540,7 +540,10 @@ require("lazy").setup({
 							group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
 							callback = function(event2)
 								vim.lsp.buf.clear_references()
-								vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+								vim.api.nvim_clear_autocmds({
+									group = "kickstart-lsp-highlight",
+									buffer = event2.buf,
+								})
 							end,
 						})
 					end
@@ -914,7 +917,7 @@ require("lazy").setup({
 	--
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	--    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-	-- { import = 'custom.plugins' },
+	{ import = "custom.plugins" },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -937,13 +940,10 @@ require("lazy").setup({
 	},
 })
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
-
-vim.bo.tabstop = 2
-vim.bo.shiftwidth = 2
-vim.bo.expandtab = true
-vim.bo.softtabstop = 2
+-- vim.bo.tabstop = 2
+-- vim.bo.shiftwidth = 2
+-- vim.bo.expandtab = true
+-- vim.bo.softtabstop = 2
 
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "ruby",
@@ -970,3 +970,6 @@ vim.bo.softtabstop = 2
 --   capabilities = lsp_capabilities,
 --   cmd = { "/Users/ahooper/.asdf/shims/ruby-lsp" },
 -- }
+
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
