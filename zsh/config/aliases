@@ -13,6 +13,9 @@ export KUBE_NAMESPACE="meet"
 
 alias bmeet-prod="export KUBECONFIG=~/.kube/meet-prod"
 alias bmeet-staging="export KUBECONFIG=~/.kube/meet-staging"
+alias bmeet-v2-prod="export KUBECONFIG=~/.kube/meet-v2-prod"
+alias bmeet-v2-staging="export KUBECONFIG=~/.kube/meet-v2-staging"
+
 alias ksed="sed -n 's/\*[\ ]*\([A-z0-9_.-]*\).*/\1/p'"
 alias kgrepsed="kubectl config get-contexts -n ${KUBE_NAMESPACE} | ksed"
 alias kcontext="echo -e 'Kubernetes Context (kubectl):\n $(kgrepsed)'"
