@@ -1,3 +1,7 @@
+getantidote/use-omz
+
+ohmyzsh/ohmyzsh path:lib
+
 sindresorhus/pure     kind:fpath
 zsh-users/zsh-autosuggestions kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
