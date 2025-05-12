@@ -10,3 +10,7 @@ fi
 
 # Aliases for running rspec in parallel instead of normally
 alias pspec="bundle exec parallel_rspec"
+
+if [ -e ~/.config/zsh/aliases.local ]; then
+  . ~/.config/zsh/aliases.local
+fi
