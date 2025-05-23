@@ -1,1 +1,7 @@
 export GPG_TTY=$(tty)
+
+# Local configuration of env variables
+
+if [ -e ~/.config/zsh/env.local ]; then
+  . ~/.config/zsh/env.local
+fi
