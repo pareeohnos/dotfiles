@@ -1,2 +1,4 @@
 source <(switcher init zsh)
 
+### Fix the slowness of pasting with the zsh-syntax-highlighting plugin
+zstyle ':bracketed-paste-magic' active-widgets '.self-*'
