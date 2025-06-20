@@ -950,20 +950,13 @@ require("lazy").setup({
 -- vim.bo.softtabstop = 2
 
 -- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "ruby",
---   callback = function()
---     vim.lsp.start {
---       name = "rubocop",
---       cmd = { "bundle", "exec", "rubocop", "--lsp" },
---       --root_dir = vim.lsp.util.root_pattern('.rubocop.yml'),
---     }
---   end,
--- })
-
--- vim.api.nvim_create_autocmd("BufWritePre", {
--- 	pattern = "*.rb",
+-- 	pattern = "ruby",
 -- 	callback = function()
--- 		vim.lsp.buf.format()
+-- 		vim.lsp.start({
+-- 			name = "rubocop",
+-- 			cmd = { "bundle", "exec", "rubocop", "--lsp" },
+-- 			--root_dir = vim.lsp.util.root_pattern('.rubocop.yml'),
+-- 		})
 -- 	end,
 -- })
 
@@ -974,6 +967,20 @@ require("lazy").setup({
 --   capabilities = lsp_capabilities,
 --   cmd = { "/Users/ahooper/.asdf/shims/ruby-lsp" },
 -- }
+
+-- The rubocop version that comes with Mason doesn't always match the bundled
+-- version and causes issues. Always execute it with `bundle exec`
+vim.lsp.config("rubocop", {
+	cmd = { "bundle", "exec", "rubocop", "--lsp" },
+})
+
+-- Ensure that the LSP auto-formats the file on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.rb",
+	callback = function()
+		vim.lsp.buf.format()
+	end,
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
