@@ -39,3 +39,5 @@
 [user]
 	name = Adrian Hooper
 	email = git@ca.hooper.co.uk
+[grep]
+	extendedRegexp = true

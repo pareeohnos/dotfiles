@@ -157,7 +157,7 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -696,14 +696,14 @@ require("lazy").setup({
 				end)(),
 				dependencies = {
 					-- `friendly-snippets` contains a variety of premade snippets.
-					--    See the README about individual language/framework/plugin snippets:
-					--    https://github.com/rafamadriz/friendly-snippets
-					-- {
-					--   'rafamadriz/friendly-snippets',
-					--   config = function()
-					--     require('luasnip.loaders.from_vscode').lazy_load()
-					--   end,
-					-- },
+					--   See the README about individual language/framework/plugin snippets:
+					--   https://github.com/rafamadriz/friendly-snippets
+					{
+						"rafamadriz/friendly-snippets",
+						config = function()
+							require("luasnip.loaders.from_vscode").lazy_load()
+						end,
+					},
 				},
 			},
 			"saadparwaiz1/cmp_luasnip",
@@ -801,6 +801,14 @@ require("lazy").setup({
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
 		"folke/tokyonight.nvim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
+		opts = {
+			style = "storm",
+			on_colors = function(colors)
+				-- The colour that comes with it is a little hard to see so this is
+				-- a slightly lighter version
+				colors.fg_gutter = "#4D567F"
+			end,
+		},
 		init = function()
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
@@ -944,6 +952,7 @@ require("lazy").setup({
 	},
 })
 
+require("config/styling")
 require("config/autoformat")
 require("config/rubocop")
 require("config/diagnostics-float")
