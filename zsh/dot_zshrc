@@ -61,3 +61,11 @@ if [ -f '/Users/adrianhooper/Documents/Work/Utils/google-places/google-cloud-sdk
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/adrianhooper/Documents/Work/Utils/google-places/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/adrianhooper/Documents/Work/Utils/google-places/google-cloud-sdk/completion.zsh.inc'; fi
 eval "$(mise activate zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/adrianhooper/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
