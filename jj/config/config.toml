@@ -5,4 +5,8 @@ name = "Adrian Hooper"
 email = "git@ca.hooper.co.uk"
 
 [ui]
-diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
+diff-editor = "vscode"
+merge-editor = "vscode"
+
+[remotes.origin]
+auto-track-created-bookmarks = "*"
